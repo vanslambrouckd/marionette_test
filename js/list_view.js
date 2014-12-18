@@ -9,10 +9,25 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
         highlightName: function(event) {
             event.preventDefault();
             this.$el.toggleClass('warning');
+            this.trigger('contact:highlight', this.model);
         },
         deleteContact: function(event) {
             event.stopPropagation(); //zodat highlightname niet uitgevoerd wordt, (event bubbling)
-            this.model.collection.remove(this.model);
+
+            /*
+            model delete moet in view, view is enkel om dingen weer te geven:
+            doorgeven aan controller
+            */
+            this.trigger('contact:delete', this.model);
+        },
+        remove: function() {
+            //marionette calls remove pethod when model is from the collection
+            //standaard wordt de tr gehide: deleten:
+            //this.$el.fadeOut(); 
+            var self = this;
+            this.$el.fadeOut(function() {
+                Marionette.ItemView.prototype.remove.call(self);
+            });
         }
     });
 

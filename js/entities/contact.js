@@ -35,7 +35,6 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
     Entities.getContactEntities = initializeContacts();
 
     ContactManager.reqres.setHandler('contact:entities', function() {
-        console.log(Entities);
         return Entities.getContactEntities;
     })
 });
