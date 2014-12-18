@@ -18,12 +18,19 @@
 	<script type="text/template" id="contact-list-item">
 		<td><p><%= firstName %></td>
 		<td> <p><%= lastName %></p></td>
+		<td>
+			<div class="ui icon button jsDelete">
+			  <i class="trash icon"></i>
+			</div>
+		</td>
 	</script>
 
 	<script type="text/template" id="contact-list">
 		<thead>
 			<tr>
-				<th>First name</th><th>Last name</th></tr>
+				<th>First name</th>
+				<th>Last name</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
