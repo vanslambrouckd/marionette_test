@@ -1,14 +1,16 @@
 ContactManager.module('Entities', function(Entities, ContactManager, Backbone, Marionette, $, _) {
     Entities.Contact = Backbone.Model.extend({
+        localStorage: new Backbone.LocalStorage('contact-backbone'),
         defaults: {
             firstName: '',
             phoneNumber: 'No phone number'
-        }
+        },
     });
 
     Entities.ContactCollection = Backbone.Collection.extend({
         model: Entities.Contact,
-        comparator: 'firstName'
+        comparator: 'firstName',
+        localStorage: new Backbone.LocalStorage('contact-backbone')
     });
 
     var contacts; //private var
@@ -28,15 +30,37 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
             }
         ];
 
-        if (contacts === undefined) {
-            contacts = new Entities.ContactCollection(conts);
+        var contacts = new Entities.ContactCollection(conts);
+        console.log(contacts);
+        contacts.forEach(function(contact) {
+            contact.save();
+        });
+        return contacts;
+    }
+
+    Entities.getContactEntities = function() {
+        var contacts = new Entities.ContactCollection();
+        contacts.fetch();
+        if (contacts.length === 0) {
+            console.log('initializeContacts');
+            return initializeContacts();
         }
         return contacts;
     }
 
-    Entities.getContactEntities = initializeContacts();
+    Entities.getContactEntity = function(contactId) {
+        var contact = new Entities.Contact({
+            id: contactId
+        });
+        contact.fetch();
+        return contact;
+    }
+
+    ContactManager.reqres.setHandler('contact:entity', function(id) {
+        return Entities.getContactEntity(id);
+    });
 
     ContactManager.reqres.setHandler('contact:entities', function() {
-        return Entities.getContactEntities;
-    })
+        return Entities.getContactEntities();
+    });
 });
