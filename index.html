@@ -22,15 +22,12 @@
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/entities/contact.js"></script>
 	<script type="text/javascript" src="js/list_view.js"></script>
+	<script type="text/javascript" src="js/list_controller.js"></script>
 	
 
 	<script type="text/javascript">
 		ContactManager.on('start', function() {
-			var contacts = ContactManager.request('contact:entities');		
-			var contactsListView = new ContactManager.ContactsApp.List.Contacts({
-				collection:contacts
-			});		
-			ContactManager.mainRegion.show(contactsListView);
+			ContactManager.ContactsApp.List.Controller.listContacts();
 		});
 
 		ContactManager.start();
