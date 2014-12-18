@@ -21,37 +21,15 @@
 
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/entities/contact.js"></script>
+	<script type="text/javascript" src="js/list_view.js"></script>
 	
 
 	<script type="text/javascript">
-
-		ContactManager.ContactItemView = Marionette.ItemView.extend({
-			events: {
-				'click p': 'alertPhoneNumber'
-			},
-			tagName: 'li',
-			template: '#contact-list-item',
-			alertPhoneNumber: function() {
-				alert(this.model.escape('phoneNumber'));
-			}
-		});
-
-		ContactManager.ContactsView = Marionette.CollectionView.extend({
-			tagName: 'ul',
-			childView: ContactManager.ContactItemView
-		});
-
-
 		ContactManager.on('start', function() {
-			var contacts = ContactManager.request('contact:entities');
-			
-			console.log(contacts);
-			
-			var contactsListView = new ContactManager.ContactsView({
+			var contacts = ContactManager.request('contact:entities');		
+			var contactsListView = new ContactManager.ContactsApp.List.Contacts({
 				collection:contacts
-			});
-
-
+			});		
 			ContactManager.mainRegion.show(contactsListView);
 		});
 
