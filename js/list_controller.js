@@ -29,6 +29,15 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                     ContactManager.trigger('contact:show', model.get('id'));
                 });
 
+                contactsListView.on('childview:contact:edit', function(childView, model) {
+                    //p129
+                    console.log('hier doordoen');
+                    var view = new ContactManager.ContactsApp.Edit.Contact({
+                        model: model
+                    });
+                    ContactManager.modalRegion.show(view);
+                });
+
                 ContactManager.mainRegion.show(contactsListView);
             });
         }

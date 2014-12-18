@@ -5,7 +5,8 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
         events: {
             'click': 'highlightName',
             'click .jsDelete': 'deleteContact',
-            'click .jsShow': 'showContact'
+            'click .jsShow': 'showContact',
+            'click .jsEdit': 'editContact'
         },
         highlightName: function(event) {
             event.preventDefault();
@@ -34,6 +35,12 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
             event.preventDefault();
             event.stopPropagation();
             this.trigger('contact:show', this.model);
+        },
+        editContact: function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.trigger('contact:edit', this.model);
+            console.log('edit');
         }
     });
 

@@ -1,3 +1,6 @@
+/*
+backbone marionette.js a gente introduction
+*/
 _.extend(Backbone.Validation.callbacks, {
     //http://jsfiddle.net/thedersen/udXL5/
 
@@ -23,7 +26,10 @@ _.extend(Backbone.Validation.callbacks, {
 
 var ContactManager = new Marionette.Application();
 ContactManager.addRegions({
-    mainRegion: '#main-region'
+    mainRegion: '#main-region',
+    modalRegion: Marionette.Region.Modal.extend({
+        el: '#modal-region'
+    })
 });
 
 ContactManager.navigate = function(route, options) {

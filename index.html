@@ -21,10 +21,37 @@
 	<div id="main-region">
 	</div>
 
+	<div class="ui modal" id="modal-region">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    <%= title %>
+	  </div>
+	  <div class="content">
+	    <div class="ui medium image">
+	      <img src="/images/avatar/large/chris.jpg">
+	    </div>
+	    <div class="description">
+	      <%= content %>
+	    </div>
+	  </div>
+	  <div class="actions">
+	    <div class="ui black button">
+	      Nope
+	    </div>
+	    <div class="ui positive right labeled icon button">
+	      Yep, that's me
+	      <i class="checkmark icon"></i>
+	    </div>
+	  </div>
+	</div>
+
 	<script type="text/template" id="contact-list-item">
 		<td><p><%= firstName %></td>
 		<td> <p><%= lastName %></p></td>
 		<td>
+			<a href="#contacts/<%= id %>/edit" class="ui icon button jsEdit">
+			  <i class="pencil icon"></i>
+			</a>
 			<a href="#contacts/<%= id %>" class="ui icon button jsShow">
 			  <i class="search icon"></i>
 			</a>
@@ -90,6 +117,7 @@
 		</div>
 	</script>
 
+	<script type="text/javascript" src="js/region_modal.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/common_views.js"></script>
 
