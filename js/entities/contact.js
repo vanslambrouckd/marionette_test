@@ -11,9 +11,9 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
         comparator: 'firstName'
     });
 
-    var contacts;
+    var contacts; //private var
 
-    Entities.initializeContacts = function() { //private function
+    var initializeContacts = function() { //private function
         var conts = [ //private var
             {
                 firstName: 'david',
@@ -31,4 +31,11 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
         }
         return contacts;
     }
+
+    Entities.getContactEntities = initializeContacts();
+
+    ContactManager.reqres.setHandler('contact:entities', function() {
+        console.log(Entities);
+        return Entities.getContactEntities;
+    })
 });

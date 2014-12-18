@@ -43,7 +43,7 @@
 
 
 		ContactManager.on('start', function() {
-			var contacts = ContactManager.Entities.initializeContacts();
+			var contacts = ContactManager.request('contact:entities');
 			
 			console.log(contacts);
 			
