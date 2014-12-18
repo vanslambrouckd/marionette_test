@@ -1,7 +1,8 @@
 ContactManager.module('ContactsApp', function(ContactsApp, ContactManager, Backbone, Marionette, $, _) {
     ContactsApp.Router = Marionette.AppRouter.extend({
         appRoutes: {
-            'contacts': 'listContacts'
+            'contacts': 'listContacts',
+            'contacts/:id': 'showContact'
         }
     });
 
@@ -10,11 +11,14 @@ ContactManager.module('ContactsApp', function(ContactsApp, ContactManager, Backb
         listContacts: function() {
             ContactsApp.List.Controller.listContacts();
             console.log('route to list contacts was triggered');
+        },
+        showContact: function(id) {
+            ContactsApp.Show.Controller.showContact(id);
         }
     };
 
     ContactManager.on('contacts:list', function() {
-        ContactManager.navigate('contacts');
+        ContactManager.navigate('contacts'); //update url fragment
         API.listContacts();
     });
 

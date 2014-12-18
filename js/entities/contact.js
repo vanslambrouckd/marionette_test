@@ -16,10 +16,12 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
     var initializeContacts = function() { //private function
         var conts = [ //private var
             {
+                id: 1,
                 firstName: 'david',
                 lastName: 'van'
             },
             {
+                id: 2,
                 firstName: 'Bob',
                 lastName: 'Brigham',
                 phoneNumber: '66998877'
