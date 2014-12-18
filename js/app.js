@@ -52,4 +52,5 @@ ContactManager.on('start', function() {
             ContactManager.trigger('contacts:list');
         }
     }
+    ContactManager.modalRegion.show();
 });

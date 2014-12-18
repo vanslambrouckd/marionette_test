@@ -9,17 +9,18 @@ Marionette.Region.Modal = Marionette.Region.extend({
 
         ContactManager.modalRegion.show(view);
 
-        var dialogOpts = {
+        var modalOpts = {
             closable: false,
             onDeny: function() {
                 self.closeDialog();
             },
         }
-        $('#modal-region').modal({}).modal('show');
+        console.log(this.$el);
+        this.$el.modal(modalOpts).modal('show');
     },
     closeDialog: function() {
         this.stopListening();
         this.close();
-        $('#modal-region').modal().modal('hide');
+        this.$el.modal('hide');
     }
 });
