@@ -9,7 +9,7 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
         tagName: 'ul',
         childView: List.Contact
     });
-	*/
+    */
 
     /*
     composite view:
@@ -21,6 +21,6 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
         className: 'table table-hover',
         template: '#contact-list',
         childView: List.Contact,
-        itemViewContainer: 'tbody'
+        childViewContainer: 'tbody'
     });
 });
