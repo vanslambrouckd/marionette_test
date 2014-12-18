@@ -9,6 +9,8 @@
 	<script src="bower_components/underscore/underscore.js"></script>
 	<script src="bower_components/backbone/backbone.js"></script>
 	<script src="bower_components/backbone.marionette/lib/backbone.marionette.min.js"></script>
+	<script src="bower_components/backbone.syphon/lib/backbone.syphon.min.js"></script>
+
 	<script src="bower_components/backbone.localStorage/backbone.localStorage-min.js"></script>
 	<link rel="stylesheet" type="text/css" href="bower_components/semantic-ui/dist/semantic.min.css">
 	<script src="bower_components/semantic-ui/dist/semantic.min.js"></script>
@@ -43,24 +45,22 @@
 	</script>
 
 	<script type="text/template" id="contact-form">
-		<div class="ui form">
-			<h4 class="ui dividing header">Edit <%= firstName %> <%= lastName %></h4>
-		 
-		    <div class="field">
-		      <label>First Name</label>
-		      <input placeholder="First Name" type="text" value="<%= firstName %>">
-		    </div>
-		    <div class="field">
-		      <label>Last Name</label>
-		      <input placeholder="Last Name" type="text" value="<%= lastName %>">
-		    </div>
-		    <div class="field">
-		      <label>Phone number</label>
-		      <input placeholder="Phone number" type="text" value="<%= phoneNumber %>">
-		    </div>
-		    <div class="ui submit button" id="editContact">Save</div>
-		  </div>		  
-		</div>
+		<h4 class="ui dividing header">Edit <%= firstName %> <%= lastName %></h4>
+	 
+	    <div class="field">
+	      <label>First Name</label>
+	      <input placeholder="First Name" type="text" value="<%= firstName %>" name="firstName">
+	    </div>
+	    <div class="field">
+	      <label>Last Name</label>
+	      <input placeholder="Last Name" type="text" value="<%= lastName %>" name="lastName">
+	    </div>
+	    <div class="field">
+	      <label>Phone number</label>
+	      <input placeholder="Phone number" type="text" value="<%= phoneNumber %>" name="phoneNumber">
+	    </div>
+	    <div class="ui submit button" id="editContact">Save</div>
+	  </div>		  
 	</script>
 
 	<script type="text/template" id="contact-view">
