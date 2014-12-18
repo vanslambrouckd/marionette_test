@@ -80,7 +80,7 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
                     defer.resolve(undefined);
                 }
             })
-        }, 2000);
+        }, 400);
         return defer.promise();
     }
 
