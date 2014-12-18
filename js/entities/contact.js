@@ -5,6 +5,16 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
             firstName: '',
             phoneNumber: 'No phone number'
         },
+        validation: {
+            firstName: {
+                required: true,
+                msg: 'Please fill in a firstName and try again'
+            },
+            lastName: {
+                required: true,
+                msg: 'Please fill in a firstName and try again'
+            }
+        }
     });
 
     Entities.ContactCollection = Backbone.Collection.extend({

@@ -13,3 +13,7 @@ ContactManager.on('contact:show', function(id) {
 });
 
 trigger gaat altijd van view naar controller naar Contactmanager
+
+todo
+====
+form validation: validate on input blur (ipv form submit)

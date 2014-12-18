@@ -18,8 +18,12 @@ ContactManager.module('ContactsApp.Edit', function(Edit, ContactManager, Backbon
                     });
 
                     view.on('form:submit', function(data) {
-                        contact.save(data);
-                        ContactManager.trigger('contact:show', contact.get('id'));
+                        contact.set(data);
+                        if (contact.isValid(true)) {
+                            contact.save();
+                            ContactManager.trigger('contact:show', contact.get('id'));
+                        } else {
+                        }
                     });
                 } else {
                     view = new ContactManager.ContactsApp.Show.MissingContact();
