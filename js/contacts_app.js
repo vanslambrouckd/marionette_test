@@ -22,6 +22,11 @@ ContactManager.module('ContactsApp', function(ContactsApp, ContactManager, Backb
         API.listContacts();
     });
 
+    ContactManager.on('contact:show', function(id) {
+        ContactManager.navigate('contacts/' + id); //zodat url upgedate wordt
+        API.showContact(id);
+    });
+
     /*
     ContactManager.on('start', function(){}); wordt pas uitgevoerd NADAT alle initializers uitgevoerd werden
     */

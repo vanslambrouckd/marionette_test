@@ -19,7 +19,7 @@
 		<td><p><%= firstName %></td>
 		<td> <p><%= lastName %></p></td>
 		<td>
-			<a href="#" class="ui icon button jsShow">
+			<a href="#contacts/<%= id %>" class="ui icon button jsShow">
 			  <i class="search icon"></i>
 			</a>
 			<div class="ui icon button jsDelete">
@@ -43,6 +43,16 @@
 	<script type="text/template" id="contact-view">
 		<h1><%= firstName %> <%= lastName %></h1>
 		<p><strong>Phone number:</strong> <%= phoneNumber %></p>
+	</script>
+
+	<script type="text/template" id="missing-contact-view">
+		<div class="ui warning message">
+		  <i class="close icon"></i>
+		  <div class="header">
+		    Contact not found
+		  </div>
+		  This contact doesn't exist
+		</div>
 	</script>
 
 	<script type="text/javascript" src="js/app.js"></script>

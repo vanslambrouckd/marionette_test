@@ -18,8 +18,7 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
             contactsListView.on('childview:contact:show', function(childView, model) {
                 console.log('received childview:contact:show event on model', model);
 
-                ContactManager.navigate('contacts/' + model.get('id')); //zodat url upgedate wordt
-                ContactManager.ContactsApp.Show.Controller.showContact(model);
+                ContactManager.trigger('contact:show', model.get('id'));
             });
 
             ContactManager.mainRegion.show(contactsListView);
