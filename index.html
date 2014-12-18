@@ -16,7 +16,18 @@
 	</div>
 
 	<script type="text/template" id="contact-list-item">
-		<p><%= firstName %> <%= lastName %></p>
+		<td><p><%= firstName %></td>
+		<td> <%= lastName %></p></td>
+	</script>
+
+	<script type="text/template" id="contact-list">
+		<thead>
+			<tr>
+				<th>First name</th><th>Last name</th></tr>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
 	</script>
 
 	<script type="text/javascript" src="js/app.js"></script>
@@ -26,10 +37,6 @@
 	
 
 	<script type="text/javascript">
-		ContactManager.on('start', function() {
-			ContactManager.ContactsApp.List.Controller.listContacts();
-		});
-
 		ContactManager.start();
 	</script>
 </body>
