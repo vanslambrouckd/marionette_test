@@ -2,7 +2,10 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
     List.Controller = {
         listContacts: function() {
 
-            var loadingView = new ContactManager.Common.Views.Loading();
+            var loadingView = new ContactManager.Common.Views.Loading({
+                title: 'Loading list view',
+                message: 'I am loading the list view please wait...'
+            });
             ContactManager.mainRegion.show(loadingView);
 
             var fetchingContacts = ContactManager.request('contact:entities');
