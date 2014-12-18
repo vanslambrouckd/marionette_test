@@ -12,7 +12,13 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
             });
 
             contactsListView.on('childview:contact:highlight', function(childView, model) {
-                console.log('highlighting toggled on model: ' + model);
+                console.log('highlighting toggled on model: ', model);
+            });
+
+            contactsListView.on('childview:contact:show', function(childView, model) {
+                console.log('received childview:contact:show event on model', model);
+
+                ContactManager.ContactsApp.Show.Controller.showContact(model);
             });
 
             ContactManager.mainRegion.show(contactsListView);

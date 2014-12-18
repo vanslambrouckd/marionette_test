@@ -4,7 +4,8 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
         template: '#contact-list-item',
         events: {
             'click': 'highlightName',
-            'click .jsDelete': 'deleteContact'
+            'click .jsDelete': 'deleteContact',
+            'click .jsShow': 'showContact'
         },
         highlightName: function(event) {
             event.preventDefault();
@@ -28,6 +29,11 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
             this.$el.fadeOut(function() {
                 Marionette.ItemView.prototype.remove.call(self);
             });
+        },
+        showContact: function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.trigger('contact:show', this.model);
         }
     });
 
@@ -48,6 +54,16 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
         className: 'ui table',
         template: '#contact-list',
         childView: List.Contact,
-        childViewContainer: 'tbody'
+        childViewContainer: 'tbody',
+        onChildviewContactDelete: function() {
+            /*
+            https://github.com/marionettejs/backbone.marionette/blob/master/docs/marionette.functions.md#marionettetriggermethod
+            deze functie wordt automatisch uitgevoerd omwille van 
+            this.trigger('contact:delete', this.model); in de childview (List.Contact)
+            */
+            this.$el.fadeOut(1000, function() {
+                $(this).fadeIn(1000);
+            });
+        }
     });
 });
