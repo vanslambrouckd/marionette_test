@@ -20,8 +20,7 @@ ContactManager.on('start', function() {
         Backbone.history.start();
 
         if (this.getCurrentRoute() === '') { //if no #contacts
-            ContactManager.navigate('contacts'); //update url fragment
-            ContactManager.ContactsApp.List.Controller.listContacts(); //show contacts
+            ContactManager.trigger('contacts:list');
         }
     }
 });

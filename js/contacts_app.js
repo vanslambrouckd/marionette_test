@@ -13,6 +13,11 @@ ContactManager.module('ContactsApp', function(ContactsApp, ContactManager, Backb
         }
     };
 
+    ContactManager.on('contacts:list', function() {
+        ContactManager.navigate('contacts');
+        API.listContacts();
+    });
+
     /*
     ContactManager.on('start', function(){}); wordt pas uitgevoerd NADAT alle initializers uitgevoerd werden
     */
