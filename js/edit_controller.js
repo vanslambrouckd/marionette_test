@@ -18,11 +18,8 @@ ContactManager.module('ContactsApp.Edit', function(Edit, ContactManager, Backbon
                     });
 
                     view.on('form:submit', function(data) {
-                        contact.set(data);
-                        if (contact.isValid(true)) {
-                            contact.save();
+                        if (contact.save(data)) {
                             ContactManager.trigger('contact:show', contact.get('id'));
-                        } else {
                         }
                     });
                 } else {
