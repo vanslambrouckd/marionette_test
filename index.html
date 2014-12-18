@@ -19,19 +19,11 @@
 		<p><%= firstName %> <%= lastName %></p>
 	</script>
 
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/entities/contact.js"></script>
+	
+
 	<script type="text/javascript">
-		var ContactManager = new Marionette.Application();
-
-		ContactManager.addRegions({
-			mainRegion: '#main-region'
-		});
-
-		ContactManager.Contact = Backbone.Model.extend({
-			defaults: {
-				firstName: '',
-				phoneNumber: 'No phone number'
-			}
-		});
 
 		ContactManager.ContactItemView = Marionette.ItemView.extend({
 			events: {
@@ -49,26 +41,10 @@
 			childView: ContactManager.ContactItemView
 		});
 
-		ContactManager.ContactCollection = Backbone.Collection.extend({
-			model: ContactManager.Contact,
-			comparator: 'firstName'
-		});
-
 
 		ContactManager.on('start', function() {
-			var conts = [
-				{
-					firstName: 'david',
-					lastName: 'van'
-				},
-				{
-					firstName: 'Bob',
-					lastName: 'Brigham',
-					phoneNumber: '66998877'
-				}
-			]
+			var contacts = ContactManager.Entities.initializeContacts();
 			
-			var contacts = new ContactManager.ContactCollection(conts);
 			console.log(contacts);
 			
 			var contactsListView = new ContactManager.ContactsView({
