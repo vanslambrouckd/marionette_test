@@ -88,11 +88,19 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
     om de tbody itemcollection te wrappen in table en theader tag
     (=samengestelde view)
     */
+
+    var noContactsView = Marionette.ItemView.extend({
+        template: '#contact-list-none',
+        tagName: 'tr',
+        className: 'error'
+    })
+
     List.Contacts = Marionette.CompositeView.extend({
         tagName: 'table',
         className: 'ui table',
         template: '#contact-list',
         childView: List.Contact,
+        emptyView: noContactsView,
         childViewContainer: 'tbody',
         onChildviewContactDelete: function() {
             /*
