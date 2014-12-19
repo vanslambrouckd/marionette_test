@@ -13,7 +13,7 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
             },
             lastName: {
                 required: true,
-                msg: 'Please fill in a firstName and try again'
+                msg: 'Please fill in a lastName and try again'
             }
         }
     });
