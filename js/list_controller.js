@@ -17,7 +17,21 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                 var contactsListView = new List.Contacts({
                     collection: contacts
                 });
+                /**/
+                //HIER DOORDOEN p148
+                contactsListPanel.on('contact:new', function() {
+                    var newContact = new ContactManager.Entities.Contact();
 
+                    var view = new ContactManager.ContactsApp.New.Contact({
+                        model: newContact
+                    });
+
+                    view.on('form:submit', function(data) {
+                        alert('ja');
+                    });
+                });
+
+                /**/
                 contactsListLayout.on('show', function() {
                     contactsListLayout.panelRegion.show(contactsListPanel);
                     contactsListLayout.contactsRegion.show(contactsListView);

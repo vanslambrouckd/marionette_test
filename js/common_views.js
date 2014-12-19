@@ -35,4 +35,23 @@ ContactManager.module('Common.Views', function(Views, ContactManager, Backbone, 
             $('#spinner').spin(opts);
         }
     });
+
+    Views.Form = Marionette.ItemView.extend({
+        template: '#contact-form',
+        /*
+        tagName: 'form',
+        className: 'ui form',
+        */
+        events: {
+            'click .jsSubmit': 'submitContact'
+        },
+        initialize: function() {
+            Backbone.Validation.bind(this);
+        },
+        submitContact: function(event) {
+            event.preventDefault();
+            var data = Backbone.Syphon.serialize(this);
+            this.trigger('form:submit', data);
+        }
+    });
 });

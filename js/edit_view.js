@@ -1,4 +1,5 @@
 ContactManager.module('ContactsApp.Edit', function(Edit, ContactManager, Backbone, Marionette, $, _) {
+    /*
     Edit.Contact = Marionette.ItemView.extend({
         template: '#contact-form',
         tagName: 'form',
@@ -14,5 +15,9 @@ ContactManager.module('ContactsApp.Edit', function(Edit, ContactManager, Backbon
             var data = Backbone.Syphon.serialize(this); //syphon heeft formtag nodig + name attr op inputs
             this.trigger('form:submit', data);
         }
+    });
+    */
+    Edit.Contact = ContactManager.Common.Views.Form.extend({
+
     });
 });

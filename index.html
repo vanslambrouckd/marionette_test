@@ -86,6 +86,7 @@
 	</script>
 
 	<script type="text/template" id="contact-form">
+	<form class="ui form">
 		<h4 class="ui dividing header">Edit <%= firstName %> <%= lastName %></h4>
 	 
 	    <div class="field">
@@ -100,8 +101,8 @@
 	      <label>Phone number</label>
 	      <input placeholder="Phone number" type="text" value="<%= phoneNumber %>" name="phoneNumber">
 	    </div>
-	    <div class="ui submit button" id="editContact">Save</div>
-	  </div>		  
+	    <div class="ui submit button jsSubmit">Save</div>
+	  </form>		  
 	</script>
 
 	<script type="text/template" id="contact-view">
@@ -142,6 +143,7 @@
 	<script type="text/javascript" src="js/show_controller.js"></script>
 	<script type="text/javascript" src="js/edit_view.js"></script>
 	<script type="text/javascript" src="js/edit_controller.js"></script>
+	<script type="text/javascript" src="js/new_view.js"></script>
 
 	
 
