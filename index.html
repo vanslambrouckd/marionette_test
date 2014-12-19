@@ -47,10 +47,28 @@
 
 	<script type="text/template" id="contact-list-layout">
 		<div id="panel-region"></div>
-		<div id="contacts-region"></div>
+		<div id="contacts-region">
+		</div>
 	</script>
 
 	<script type="text/template" id="contact-list-panel">
+		<div class="ui menu">
+		  <a class="active item">
+		    <i class="user icon"></i> Contacts
+		  </a>
+		  <a class="item">
+		    <i class="info icon"></i> About
+		  </a>
+		  <div class="right menu">
+		    <form class="item" id="filter-form">
+		      <div class="ui transparent icon input">
+		        <input placeholder="Search..." type="text" class="jsSearch">
+		        <i class="search link icon"></i>
+		      </div>
+		    </form>
+		  </div>
+		</div>
+
 		<div class="ui button jsNew">
 		  <i class="user icon"></i>
 		  New contact
@@ -132,6 +150,8 @@
 
 	<script type="text/javascript" src="js/region_modal.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/entities/common.js"></script>
+	
 	<script type="text/javascript" src="js/common_views.js"></script>
 
 	<script type="text/javascript" src="js/entities/contact.js"></script>

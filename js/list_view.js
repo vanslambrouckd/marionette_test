@@ -12,13 +12,15 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
         triggers: {
             'click .jsNew': 'contact:new'
         },
-        /*
         events: {
-            'click .jsNew': function() {
-                alert('ja');
-            }
+            'submit #filter-form': 'filterContacts'
+        },
+        filterContacts: function(event) {
+            event.preventDefault();
+
+            var criterion = this.$('.jsSearch').val();
+            this.trigger('contacts:filter', criterion);
         }
-        */
     });
 
     List.Contact = Marionette.ItemView.extend({
@@ -101,6 +103,22 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
             this.$el.fadeOut(1000, function() {
                 $(this).fadeIn(1000);
             });
+        },
+        /*
+        initialize: function() {
+            this.listenTo(this.collection, 'reset', function() {
+                this.appendHtml = function(CollectionView, itemView, index) {
+                    //prepend last added item
+                    collectionView.$el.prepend(itemView.el);
+                }
+            });
+        },
+        onRenderCollection: function() {
+            this.appendHtml = function(CollectionView, itemView, index) {
+                //prepend last added item
+                collectionView.$el.prepend(itemView.el);
+            }
         }
+        */
     });
 });
