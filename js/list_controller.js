@@ -17,6 +17,12 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                 var contactsListView = new List.Contacts({
                     collection: contacts
                 });
+
+                contactsListLayout.on('show', function() {
+                    contactsListLayout.panelRegion.show(contactsListPanel);
+                    contactsListLayout.contactsRegion.show(contactsListView);
+                });
+
                 /**/
                 //HIER DOORDOEN p148
                 contactsListPanel.on('contact:new', function() {
@@ -25,17 +31,17 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                     var view = new ContactManager.ContactsApp.New.Contact({
                         model: newContact
                     });
-
                     view.on('form:submit', function(data) {
-                        alert('ja');
+                        if (newContact.save(data)) {
+                            contacts.add(newContact); //why?
+                            view.trigger('modal:close');
+                            contactsListView.children.findByModel(newContact).flash('positive');
+                        }
                     });
-                });
 
+                    ContactManager.modalRegion.show(view);
+                });
                 /**/
-                contactsListLayout.on('show', function() {
-                    contactsListLayout.panelRegion.show(contactsListPanel);
-                    contactsListLayout.contactsRegion.show(contactsListView);
-                })
 
                 contactsListView.on('childview:contact:delete', function(childView, model) {
                     model.destroy();
@@ -52,8 +58,6 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                 });
 
                 contactsListView.on('childview:contact:edit', function(childView, model) {
-                    //p129
-                    console.log('hier doordoen');
                     var view = new ContactManager.ContactsApp.Edit.Contact({
                         model: model
                     });

@@ -11,7 +11,14 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
         template: '#contact-list-panel',
         triggers: {
             'click .jsNew': 'contact:new'
+        },
+        /*
+        events: {
+            'click .jsNew': function() {
+                alert('ja');
+            }
         }
+        */
     });
 
     List.Contact = Marionette.ItemView.extend({

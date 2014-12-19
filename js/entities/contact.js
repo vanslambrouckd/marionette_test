@@ -3,6 +3,7 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
         localStorage: new Backbone.LocalStorage('contact-backbone'),
         defaults: {
             firstName: '',
+            lastName: '',
             phoneNumber: 'No phone number'
         },
         validation: {
