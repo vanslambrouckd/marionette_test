@@ -8,7 +8,7 @@ ContactManager.module('HeaderApp.List', function(List, ContactManager, Backbone,
             });
 
             headers.on('childview:navigate', function(childView, model) {
-                alert('trigger');
+                console.log('navigate triggered');
                 var trigger = model.get('navigationTrigger');
                 ContactManager.trigger(trigger);
             });
