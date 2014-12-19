@@ -1,6 +1,6 @@
 ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbone, Marionette, $, _) {
     List.Controller = {
-        listContacts: function() {
+        listContacts: function(criterion) {
 
             var loadingView = new ContactManager.Common.Views.Loading({
                 title: 'Loading list view',
@@ -29,6 +29,20 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                     }
                 });
 
+                if (criterion) {
+                    console.log('filteredContacts', filteredContacts);
+                    filteredContacts.filter(criterion);
+
+                    /*
+                    when typeing in #contacts/filter/criterion:azerty,
+                    the jsSearch field has to contain the criterion value 
+                    code can only be executed once (.once)
+                    */
+                    contactsListPanel.once('show', function() {
+                        contactsListPanel.triggerMethod('set:filter:criterion', criterion);
+                    })
+                }
+
                 var contactsListView = new List.Contacts({
                     collection: filteredContacts
                 });
@@ -41,6 +55,7 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                 contactsListPanel.on('contacts:filter', function(filterCriterion) {
                     console.log('filter list with criterion', filterCriterion);
                     filteredContacts.filter(filterCriterion);
+                    ContactManager.trigger('contacts:filter', filterCriterion);
                 });
 
                 contactsListPanel.on('contact:new', function() {

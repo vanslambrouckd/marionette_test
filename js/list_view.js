@@ -15,11 +15,18 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
         events: {
             'submit #filter-form': 'filterContacts'
         },
+        ui: {
+            criterion: 'input.jsSearch'
+        },
         filterContacts: function(event) {
             event.preventDefault();
 
             var criterion = this.$('.jsSearch').val();
             this.trigger('contacts:filter', criterion);
+        },
+        onSetFilterCriterion: function(criterion) {
+            //triggered from list_controller.js (if (criterion) {})
+            this.ui.criterion.val(criterion);
         }
     });
 
