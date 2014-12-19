@@ -71,7 +71,6 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
             event.preventDefault();
             event.stopPropagation();
             this.trigger('contact:edit', this.model);
-            console.log('edit');
         },
         flash: function(cssClass) {
             var $el = this.$el;

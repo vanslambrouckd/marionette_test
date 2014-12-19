@@ -30,7 +30,6 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                 });
 
                 if (criterion) {
-                    console.log('filteredContacts', filteredContacts);
                     filteredContacts.filter(criterion);
 
                     /*
@@ -53,7 +52,6 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                 });
 
                 contactsListPanel.on('contacts:filter', function(filterCriterion) {
-                    console.log('filter list with criterion', filterCriterion);
                     filteredContacts.filter(filterCriterion);
                     ContactManager.trigger('contacts:filter', filterCriterion);
                 });
@@ -88,8 +86,6 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                 });
 
                 contactsListView.on('childview:contact:show', function(childView, model) {
-                    console.log('received childview:contact:show event on model', model);
-
                     ContactManager.trigger('contact:show', model.get('id'));
                 });
 
@@ -97,10 +93,8 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                     var view = new ContactManager.ContactsApp.Edit.Contact({
                         model: model
                     });
-                    console.log('childView', childView);
 
                     view.on('form:submit', function(data) {
-                        console.log(data);
                         if (model.save(data)) {
                             childView.render(); //childView = table row
                             view.trigger('modal:close');

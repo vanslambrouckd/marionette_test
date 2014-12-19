@@ -26,6 +26,7 @@ _.extend(Backbone.Validation.callbacks, {
 
 var ContactManager = new Marionette.Application();
 ContactManager.addRegions({
+    headerRegion: '#header-region',
     mainRegion: '#main-region',
     modalRegion: Marionette.Region.Modal.extend({
         el: '#modal-region'

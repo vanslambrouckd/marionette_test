@@ -15,12 +15,10 @@ Marionette.Region.Modal = Marionette.Region.extend({
                 self.closeDialog();
             },
         }
-        console.log(this.$el);
         this.$el.modal(modalOpts).modal('show');
     },
     closeDialog: function() {
         this.stopListening();
-        console.log(this);
         //this.close(); //todo: check if zombie view issue: http://lostechies.com/derickbailey/2011/09/15/zombies-run-managing-page-transitions-in-backbone-apps/
         this.$el.modal('hide');
     }

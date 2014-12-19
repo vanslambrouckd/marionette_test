@@ -64,7 +64,6 @@ ContactManager.module('Entities', function(Entities, ContactManager, Backbone, M
 
         var promise = defer.promise();
         $.when(promise).done(function(contacts) {
-            console.log(contacts.length);
             if (contacts.length === 0) {
                 console.log('initializeContacts');
                 var models = initializeContacts();

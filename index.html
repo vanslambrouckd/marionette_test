@@ -8,6 +8,7 @@
 	<script src="bower_components/spin.js/jquery.spin.js"></script>
 	<script src="bower_components/underscore/underscore.js"></script>
 	<script src="bower_components/backbone/backbone.js"></script>
+	<script src="bower_components/backbone.picky/lib/backbone.picky.min.js"></script>
 	<script src="bower_components/backbone.marionette/lib/backbone.marionette.min.js"></script>
 	<script src="bower_components/backbone.syphon/lib/backbone.syphon.min.js"></script>
 	<script src="bower_components/backbone-validation/dist/backbone-validation.js"></script>
@@ -18,8 +19,9 @@
 	<script src="bower_components/semantic-ui/dist/semantic.min.js"></script>
 </head>
 <body>
-	<div id="main-region">
-	</div>
+	<div id="header-region"></div>
+
+	<div id="main-region"></div>
 
 	<div class="ui modal" id="modal-region">
 	  <i class="close icon"></i>
@@ -45,6 +47,21 @@
 	  </div>
 	</div>
 
+	<script type="text/template" id="header-template">
+		<div class="ui menu">
+			
+		</div>
+	</script>
+
+	<script type="text/template" id="header-link">
+		<a class="item" href="#<%= url %>"><i class="<%= icon %> icon"></i><%= name %></a>
+	</script>
+
+	<script type="text/template" id="about-message">
+		<h1>About this application</h1>
+		<p>This application was designed to accompagny you during learning.</p>
+	</script>
+
 	<script type="text/template" id="contact-list-none">
 		<td colspan="3">No contacts to display</td>
 	</script>
@@ -56,26 +73,18 @@
 	</script>
 
 	<script type="text/template" id="contact-list-panel">
-		<div class="ui menu">
-		  <a class="active item">
-		    <i class="user icon"></i> Contacts
-		  </a>
-		  <a class="item">
-		    <i class="info icon"></i> About
-		  </a>
-		  <div class="right menu">
-		    <form class="item" id="filter-form">
-		      <div class="ui transparent icon input">
-		        <input placeholder="Search..." type="text" class="jsSearch">
-		        <i class="search link icon"></i>
-		      </div>
-		    </form>
-		  </div>
-		</div>
+		<div class="sixteen wide column">
+			<div class="ui vertical segment">
+				<form class="ui left icon input" id="filter-form">
+				  <input placeholder="Search users..." type="text" class="jsSearch">
+				  <i class="users icon"></i>
+				</form>
 
-		<div class="ui button jsNew">
-		  <i class="user icon"></i>
-		  New contact
+				<div class="ui button jsNew">
+				  <i class="user icon"></i>
+				  New contact
+				</div>
+			</div>	
 		</div>
 	</script>
 
@@ -155,6 +164,8 @@
 	<script type="text/javascript" src="js/region_modal.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/entities/common.js"></script>
+	<script type="text/javascript" src="js/entities/header.js"></script>
+
 
 	<script type="text/javascript" src="js/common_views.js"></script>
 
@@ -169,7 +180,13 @@
 	<script type="text/javascript" src="js/edit_controller.js"></script>
 	<script type="text/javascript" src="js/new_view.js"></script>
 
-	
+	<script type="text/javascript" src="js/apps/about/about_app.js"></script>
+	<script type="text/javascript" src="js/apps/about/show_view.js"></script>
+	<script type="text/javascript" src="js/apps/about/show_controller.js"></script>
+
+	 <script src="js/apps/header/header_app.js"></script>
+	<script src="js/apps/header/list_view.js"></script>
+	<script src="js/apps/header/list_controller.js"></script>
 
 	<script type="text/javascript">
 		ContactManager.start();
