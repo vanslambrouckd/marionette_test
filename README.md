@@ -17,3 +17,4 @@ trigger gaat altijd van view naar controller naar Contactmanager
 todo
 ====
 form validation: validate on input blur (ipv form submit)
+modal: view needs to be wrapped in <div class="ui modal"> for correct layout, don't know how
