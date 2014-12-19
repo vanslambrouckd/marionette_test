@@ -35,6 +35,16 @@ ContactManager.module('ContactsApp.List', function(List, ContactManager, Backbon
                     var view = new ContactManager.ContactsApp.Edit.Contact({
                         model: model
                     });
+                    console.log('childView', childView);
+
+                    view.on('form:submit', function(data) {
+                        console.log(data);
+                        if (model.save(data)) {
+                            childView.render(); //childView = table row
+                            view.trigger('modal:close');
+                            childView.flash('positive');
+                        }
+                    });
                     ContactManager.modalRegion.show(view);
                 });
 

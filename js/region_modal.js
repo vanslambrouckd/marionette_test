@@ -10,7 +10,7 @@ Marionette.Region.Modal = Marionette.Region.extend({
         ContactManager.modalRegion.show(view);
 
         var modalOpts = {
-            closable: false,
+            //closable: false,
             onDeny: function() {
                 self.closeDialog();
             },
@@ -20,7 +20,8 @@ Marionette.Region.Modal = Marionette.Region.extend({
     },
     closeDialog: function() {
         this.stopListening();
-        this.close();
+        console.log(this);
+        //this.close(); //todo: check if zombie view issue: http://lostechies.com/derickbailey/2011/09/15/zombies-run-managing-page-transitions-in-backbone-apps/
         this.$el.modal('hide');
     }
 });
